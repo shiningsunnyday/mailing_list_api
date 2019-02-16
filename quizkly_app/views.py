@@ -20,6 +20,9 @@ class ContactList(APIView):
 
     def post(self, request, format = None):
 
+        email = request.data["email"]
+        contact = Contact(email = email)
+        contact.save()
         serializer = ContactSerializer(data = request.data)
         if serializer.is_valid():
             serializer.save()
