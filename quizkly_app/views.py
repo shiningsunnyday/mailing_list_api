@@ -21,11 +21,11 @@ class ContactList(APIView):
     def post(self, request, format = None):
 
         email = request.data["email"]
-        contact = Contact(email = email)
+        beta = request.data["beta"]
+        contact = Contact(email = email, beta = beta)
         contact.save()
         serializer = ContactSerializer(data = request.data)
         if serializer.is_valid():
-            serializer.save()
             return Response(serializer.data, status = status.HTTP_201_CREATED)
         return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 

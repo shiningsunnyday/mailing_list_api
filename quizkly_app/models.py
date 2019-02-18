@@ -6,6 +6,7 @@ class Contact(models.Model):
 
     submitted = models.DateTimeField(auto_now_add = True)
     email = models.CharField(max_length = 30)
+    beta = models.BooleanField()
 
     class Meta:
 
